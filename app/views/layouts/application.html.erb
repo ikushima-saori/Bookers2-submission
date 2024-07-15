@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Bookers2Ver2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,42 @@
   </head>
 
   <body>
+    <header>
+      <% if user_signed_in? %> <!--ログイン状態なら-->
+        <li>
+          <%= link_to "Bookers", root_path %>
+        </li>
+        <li>
+          <p>"Home"リンク(/users/id)</p>
+        </li>
+        <li>
+          <p>"Users"リンク(/users)</p>
+        </li>
+        <li>
+          <p>"Books"リンク(/books)</p>
+        </li>
+        <li>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %> <!--ログアウト状態なら-->
+        <li>
+          <%= link_to "Bookers", root_path %>
+        </li>
+        <li>
+          <%= link_to "Home", root_path %>
+        </li>
+        <li>
+          <p>"About"リンク(/books)</p>
+        </li>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Log in", new_user_session_path %>
+        </li>
+      <% end %>
+    </header>
+
     <%= yield %>
   </body>
 </html>
