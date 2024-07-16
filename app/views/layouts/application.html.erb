@@ -13,40 +13,60 @@
   <body>
     <header>
       <% if user_signed_in? %> <!--ログイン状態なら-->
-        <li>
+        <div>
           <%= link_to "Bookers", root_path %>
-        </li>
-        <li>
-          <%= link_to "Home", user_path(current_user.id) %>
-        </li>
-        <li>
-          <%= link_to "Users", users_path %>
-        </li>
-        <li>
-          <%= link_to "Books", books_path %>
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
+        </div>
+        <div>
+          <%= link_to user_path(current_user.id) do %>
+          <i class="fa-solid fa-house"></i> Home
+          <% end %>
+        </div>
+        <div>
+          <%= link_to users_path do %>
+          <i class="fa-solid fa-users"></i> Users
+          <% end %>
+        </div>
+        <div>
+          <%= link_to books_path do %>
+          <i class="fa-solid fa-book-open"></i> Books
+          <% end %>
+        </div>
+        <div>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa-solid fa-right-from-bracket"></i> Log out
+          <% end %>
+        </div>
       <% else %> <!--ログアウト状態なら-->
-        <li>
+        <div>
           <%= link_to "Bookers", root_path %>
-        </li>
-        <li>
-          <%= link_to "Home", root_path %>
-        </li>
-        <li>
-          <%= link_to "About", about_path %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
+        </div>
+        <div>
+          <%= link_to root_path do %>
+          <i class="fa-solid fa-house"></i> Home
+          <% end %>
+        </div>
+        <div>
+          <%= link_to about_path do %>
+          <i class="fa-solid fa-link"></i> About
+          <% end %>
+        </div>
+        <div>
+          <%= link_to new_user_registration_path do %>
+          <i class="fa-solid fa-user-plus"></i> Sign up
+          <% end %>
+        </div>
+        <div>
+          <%= link_to new_user_session_path do %>
+          <i class="fa-solid fa-right-to-bracket"></i> Log in
+          <% end %>
+        </div>
       <% end %>
     </header>
-
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      CopyRight Infratop.inc
+    </footer>
   </body>
 </html>
