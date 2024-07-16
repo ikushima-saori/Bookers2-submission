@@ -17,7 +17,7 @@
           <%= link_to "Bookers", root_path %>
         </li>
         <li>
-          <p>"Home"リンク(/users/id)</p>
+          <p><%= link_to "Home", user_path(current_user.id) %></p>
         </li>
         <li>
           <p>"Users"リンク(/users)</p>
