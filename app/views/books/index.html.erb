@@ -1,4 +1,4 @@
-<h1>New book</h1>
+<h1>New book</h1> <!--新規投稿部分-->
 <%= form_with model: @book do |f| %>
   <div>
     <p>Title</p>
@@ -14,3 +14,34 @@
     <%= f.submit 'Create Book' %>
   </div>
 <% end %>
+
+
+<div> <!--投稿一覧の部分-->
+  <h1>Books</h1>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td>
+            <%= link_to user_path(book.user_id) do %>
+              <%= image_tag book.user.get_profile_image(80,80) %>
+            <% end %>
+            </td>
+          <td>
+            <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+            <% end %>
+            </td>
+          <td><%= book.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
