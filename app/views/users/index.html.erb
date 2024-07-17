@@ -1,46 +1,6 @@
 <h1>users/index　この行は後で消す</h1>
-<div class="自分のプロフィール">
-  <h2>User info</h2>
-  <div class="自分の画像">
-    <%= image_tag @user.get_profile_image(100,100) %>
-  </div>
-  <table>
-    <tbody>
-      <tr></tr>
-      <tr>
-        <th>name</th>
-        <th><%= @user.name %></th>
-      </tr>
-      <tr>
-        <th>introduction</th>
-        <th><%= @user.introduction %></th>
-      </tr>
-    </tbody>
-  </table>
-  <div class="編集ボタン">
-    <%= link_to edit_user_path(@user.id) do %>
-    <i class="fas fa-user-cog"></i>
-    <% end %>
-  </div>
-</div>
 
-<div class="新規投稿フォーム">
-  <h1>New book</h1>
-    <%= form_with model: @book do |f| %>
-  <div>
-    <p><label for="inputtitle">Title</label></p>
-    <p><%= f.text_field :title, id:"inputtitle"%></p>
-  </div>
-  <div>
-    <p><label>Opinion</label></p>
-    <p><%= f.text_field :body%></p>
-  </div>
-  <div>
-    <%= f.submit 'Create Book' %>
-  </div>
-<% end %>
-</div>
-
+<%= render 'books/side', user: @user, book: @book %>
 
 <h1>Users</h1>
 <table>
