@@ -3,16 +3,16 @@
   <h1>User info</h1>
   <%= form_with model: @user do |f| %>
   <div>
-    <label for="inputName">Name</label>
-    <%= f.text_field :name, autofocus: true, id:"inputName"%>
+    <p><label for="inputName">Name</label></p>
+    <p><%= f.text_field :name, autofocus: true, id:"inputName"%></p>
   </div>
   <div>
-    <label>Image</label>
-    <%= f.file_field :profile_image, accept: "image/*" %>
+    <p><label>Image</label></p>
+    <p><%= f.file_field :profile_image, accept: "image/*" %></p>
   </div>
   <div>
-    <label for="inputIntroduction">Introduction</label>
-    <%= f.text_field :introduction, id:"inputIntroduction"%>
+    <p><label for="inputIntroduction">Introduction</label></p>
+    <p><%= f.text_field :introduction, id:"inputIntroduction"%></p>
   </div>
   <div>
     <%= f.submit "Update User" %>
