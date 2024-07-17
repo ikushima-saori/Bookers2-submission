@@ -18,7 +18,7 @@
 <% end %>
 
 <h1>New book</h1>
-   <%= form_with model: book do |f| %>
+   <%= form_with model: Book.new do |f| %>
  <div>
   <p><label for="inputtitle">Title</label></p>
   <p><%= f.text_field :title, id:"inputtitle"%></p>

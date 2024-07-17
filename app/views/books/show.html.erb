@@ -1,6 +1,6 @@
 <h1>books/show　この行は後で消す</h1>
 
-<%= render 'side', user: @user, book: @book %>
+<%= render 'side', user: @user %>
 
 <div class="本の詳細">
   <h1>Book detail</h1>
@@ -23,7 +23,7 @@
       <td>
         <% if @book.user_id == current_user.id %>
         <td><%= link_to "Edit", edit_book_path(@book)%></td>
-        <td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
+        <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"} %></td>
         <% end %>
       </td>
     </tr>
