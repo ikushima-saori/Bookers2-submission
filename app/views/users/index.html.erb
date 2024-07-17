@@ -1,30 +1,69 @@
-<!--Users/index-->
+<h1>users/index　この行は後で消す</h1>
+<div class="自分のプロフィール">
+  <h2>User info</h2>
+  <div class="自分の画像">
+    <%= image_tag @user.get_profile_image(100,100) %>
+  </div>
+  <table>
+    <tbody>
+      <tr></tr>
+      <tr>
+        <th>name</th>
+        <th><%= @user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= @user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
+  <div class="編集ボタン">
+    <%= link_to edit_user_path(@user.id) do %>
+    <i class="fas fa-user-cog"></i>
+    <% end %>
+  </div>
+</div>
+
+<div class="新規投稿フォーム">
+  <h1>New book</h1>
+    <%= form_with model: @book do |f| %>
+  <div>
+    <label for="inputtitle">Title</label>
+    <%= f.text_field :title, id:"inputtitle"%>
+  </div>
+  <div>
+    <label>Opinion</label>
+    <%= f.text_field :body%>
+  </div>
+  <div>
+    <%= f.submit 'Create Book' %>
+  </div>
+<% end %>
+</div>
 
 
-<div class=>
 <h1>Users</h1>
 <table>
   <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
       <tr>
-        <th>image</th>
-        <th>name</th>
-        <th></th>
+        <td>
+          <%= image_tag user.get_profile_image(80,80) %>
+        </td>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= link_to "Show", user_path(user.id) %>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td>
-            <%= image_tag user.get_profile_image(80,80) %>
-          </td>
-          <td>
-            <%= user.name %>
-          </td>
-          <td>
-            <%= link_to "Show", user_path(user.id) %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+    <% end %>
+  </tbody>
+</table>
