@@ -1,86 +1,75 @@
-<header>
-<% if user_signed_in? %> <!--ログイン状態なら-->
-        <div class="ロゴ">
-          <%= link_to "Bookers", root_path %>
-        </div>
-        <nav class="ナビメニュー">
-          <ul>
-            <li class="homeボタン">
-              <%= link_to user_path(current_user.id) do %>
-              <i class="fa-solid fa-house"></i> Home
-              <% end %>
-            </li>
-          </ul>
-          <ul>
-            <li class="usersボタン">
-              <%= link_to users_path do %>
-              <i class="fa-solid fa-users"></i> Users
-              <% end %>
-            </li>
-          </ul>
-          <ul>
-            <li class="booksボタン">
-              <%= link_to books_path do %>
-              <i class="fa-solid fa-book-open"></i> Books
-              <% end %>
-            </li>
-          </ul>
-          <ul>
-            <li class=ログアウトボタン>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa-solid fa-right-from-bracket"></i> Log out
-              <% end %>
-            </li>
-          </ul>
-        </nav>
-      <% else %> <!--ログアウト状態なら-->
-        <div class="ロゴ">
-          <%= link_to "Bookers", root_path %>
-        </div>
-        <nav class="ナビメニュー">
-          <ul>
-            <li class="homeボタン">
-              <%= link_to root_path do %>
-              <i class="fa-solid fa-house"></i> Home
-              <% end %>
-            </li>
-          </ul>
-          <ul>
-            <li class="aboutボタン">
-              <%= link_to home_about_path do %>
-              <i class="fa-solid fa-link"></i> About
-              <% end %>
-            </li>
-          </ul>
-          <ul>
-            <li class="新規登録ボタン">
-              <%= link_to new_user_registration_path do %>
-              <i class="fa-solid fa-user-plus"></i> Sign up
-              <% end %>
-            </li>
-          </ul>
-          <ul>
-            <li class="ログインボタン">
-              <%= link_to new_user_session_path do %>
-              <i class="fa-solid fa-right-to-bracket"></i> Log in
-              <% end %>
-            </li>
-          </ul>
-        </nav>
-      <% end %>
-</header>
+<h2>User info</h2>
+  <%= image_tag user.get_profile_image(100,100) %>
+<table>
+  <tbody>
+    <tr></tr>
+    <tr>
+      <th>name</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= user.introduction %></th>
+    </tr>
+  </tbody>
+</table>
+<%= link_to edit_user_path(user.id) do %>
+<i class="fas fa-user-cog"></i>
+<% end %>
+
+<h1>New book</h1>
+   <%= form_with model: Book.new do |f| %>
+ <div>
+  <p><label for="inputtitle">Title</label></p>
+  <p><%= f.text_field :title, id:"inputtitle"%></p>
+</div>
+<div>
+  <p><label>Opinion</label></p>
+  <p><%= f.text_field :body%></p>
+</div>
+<div>
+  <%= f.submit 'Create Book' %>
+</div>
+  <% end %>
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  <footer>
-  <div class="container mt-5">
+  <div class="container px-5 px-sm-0">
     <div class="row">
-      <div class="mx-auto">
-        <p>CopyRight Infratop.inc</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
+      <div class="col-md-3">
+        <h2>User info</h2>
+        <%= image_tag user.get_profile_image(100,100) %>
+        <table class="table">
+          <tbody>
+            <tr></tr>
+            <tr>
+              <th>name</th>
+              <th><%= user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= user.introduction %></th>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="row">
+          <%= link_to edit_user_path(user.id) do %>
+          <i class="fas fa-user-cog"></i>
+          <% end %>
+        </div>
+        <h2 class="mt-3">New book</h2>
+        <%= form_with model: Book.new do |f| %>
+        <div class="form-group">
+          <label for="inputtitle">Title</label>
+          <%= f.text_field :title, id:"inputtitle"%>
+        </div>
+        <div class="form-group">
+          <label>Opinion</label>
+          <%= f.text_field :body%>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Create Book' %>
+        </div>
+        <% end %>
 
 
 
