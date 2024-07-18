@@ -1,68 +1,59 @@
-<h1>books/show　この行は後で消す</h1>
+<h1>users/index　この行は後で消す</h1>
 
-<%= render 'side', user: @user %>
+<%= render 'books/side', user: @user %>
 
-<div class="本の詳細">
-  <h1>Book detail</h1>
-  <table>
+<h1>Users</h1>
+<table>
+  <thead>
     <tr>
-      <td>
-        <%= link_to user_path(@book.user_id) do %>
-        <%= image_tag @book.user.get_profile_image(100,100) %>
-        <% end %><br>
-        <%= link_to @user.name, user_path(@user) %>
-      </td>
-      <td>
-        <%= link_to book_path(@book.id) do %>
-        <%= @book.title %>
-        <% end %>
-      </td>
-      <td>
-        <%= @book.body %>
-      </td>
-      <td>
-        <% if @book.user_id == current_user.id %>
-        <td><%= link_to "Edit", edit_book_path(@book)%></td>
-        <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"} %></td>
-        <% end %>
-      </td>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
     </tr>
-  </table>
-</div>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.get_profile_image(80,80) %>
+        </td>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= link_to "Show", user_path(user.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 <div class="col-md-8 offset-md-1">
-  		<h2>Book detail</h2>
-  		<table class="table">
-  		  <tbody>
-  		  <tr>
-          <td>
-            <%= link_to user_path(@book.user_id) do %>
-            <%= image_tag @book.user.get_profile_image(100,100) %>
-            <% end %>
-            <br>
-            <%= link_to @user.name, user_path(@user) %>
-          </td>
-          <td>
-            <%= link_to book_path(@book.id) do %>
-            <%= @book.title %>
-            <% end %>
-          </td>
-          <td>
-            <%= @book.body %>
-          </td>
-          <td>
-          <% if @book.user_id == current_user.id %>
-          <td>
-            <%= link_to "Edit", edit_book_path(@book)%>
-          </td>
-          <td>
-            <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"} %>
-          </td>
-          <% end %>
-        </td>
+      <h2>Users</h2>
+      <table class="table">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
     </tr>
-  </table>
-
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+<tr>
+        <td>
+          <%= image_tag user.get_profile_image(80,80) %>
+        </td>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= link_to "Show", user_path(user.id) %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
 
 
 
