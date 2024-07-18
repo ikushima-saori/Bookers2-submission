@@ -1,31 +1,36 @@
-<h1>books/show　この行は後で消す</h1>
-
 <%= render 'side', user: @user %>
 
-<div class="本の詳細">
-  <h1>Book detail</h1>
-  <table>
-    <tr>
-      <td>
-        <%= link_to user_path(@book.user_id) do %>
-        <%= image_tag @book.user.get_profile_image(100,100) %>
-        <% end %><br>
-        <%= link_to @user.name, user_path(@user) %>
-      </td>
-      <td>
-        <%= link_to book_path(@book.id) do %>
-        <%= @book.title %>
-        <% end %>
-      </td>
-      <td>
-        <%= @book.body %>
-      </td>
-      <td>
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to user_path(@book.user_id) do %>
+          <%= image_tag @book.user.get_profile_image(100,100) %>
+          <% end %>
+          <br>
+          <%= link_to @user.name, user_path(@user) %>
+        </td>
+        <td>
+          <%= link_to book_path(@book.id) do %>
+          <%= @book.title %>
+          <% end %>
+        </td>
+        <td>
+          <%= @book.body %>
+        </td>
+        <td>
         <% if @book.user_id == current_user.id %>
-        <td><%= link_to "Edit", edit_book_path(@book)%></td>
-        <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"} %></td>
+          <td>
+            <%= link_to "Edit", edit_book_path(@book)%>
+          </td>
+          <td>
+            <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"} %>
+          </td>
         <% end %>
-      </td>
-    </tr>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
