@@ -1,4 +1,3 @@
-<h1>users/edit　この行は後で消す</h1>
 <% if @user.errors.any? %>
   <%= @user.errors.count %>error prohibited this obj from being saved:
   <ul>
@@ -8,23 +7,28 @@
   </ul>
 <% end %>
 
-<div class="ユーザーの編集">
-  <h1>User info</h1>
-  <%= form_with model: @user do |f| %>
-  <div>
-    <p><label for="inputName">Name</label></p>
-    <p><%= f.text_field :name, autofocus: true, id:"inputName"%></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
+    <%= form_with model: @user do |f| %>
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <%= f.text_field :name, autofocus: true, id:"inputName", class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label>Image</label>
+        <%= f.file_field :profile_image, accept: "image/*", class:"form-control-file"  %>
+      </div>
+      <div class="form-group">
+        <label for="inputIntroduction">Introduction</label>
+        <%= f.text_area :introduction, id:"inputIntroduction", class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update User", class:"btn btn-secondary" %>
+      </div>
+        <% end %>
+    </div>
   </div>
-  <div>
-    <p><label>Image</label></p>
-    <p><%= f.file_field :profile_image, accept: "image/*" %></p>
-  </div>
-  <div>
-    <p><label for="inputIntroduction">Introduction</label></p>
-    <p><%= f.text_field :introduction, id:"inputIntroduction"%></p>
-  </div>
-  <div>
-    <%= f.submit "Update User" %>
-  </div>
-  <% end %>
 </div>
+
